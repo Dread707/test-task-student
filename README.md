@@ -40,7 +40,7 @@
   </a>
 </p>
 
-<h2 align="center">**Vuetify**</h2>
+<h2 align="center">Vuetify</h2>
 
 -------
 
