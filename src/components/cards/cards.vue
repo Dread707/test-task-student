@@ -1,0 +1,138 @@
+<template>
+  <div>
+    <grid-layout :layout.sync="gridLayout.layout"
+                 :col-num="gridLayout.colNum"
+                 :row-height="30"
+                 :is-draggable="gridLayout.draggable"
+                 :is-resizable="gridLayout.resizable"
+                 :vertical-compact="true"
+                 :use-css-transforms="false"
+    >
+      <grid-item :key="item.i" v-for="item in gridLayout.layout"
+                 :static="item.static"
+                 :x="item.x"
+                 :y="item.y"
+                 :w="item.w"
+                 :h="item.h"
+                 :i="item.i"
+      >
+        <v-btn
+            class="mx-1 my-1 remove"
+            fab
+            dark
+            x-small
+            color="error"
+            @click="removeItem(item.i)"
+        >
+          <v-icon dark>
+            mdi-close
+          </v-icon>
+        </v-btn>
+        <card-item></card-item>
+      </grid-item>
+    </grid-layout>
+  </div>
+</template>
+
+<script>
+import { GridLayout, GridItem } from "vue-grid-layout"
+import CardItem from "@/components/cards/card/card-item";
+import axios from "axios";
+export default {
+  name: "cards",
+  components: {
+    CardItem,
+    GridLayout,
+    GridItem
+  },
+  props: {
+    gridLayout: {
+      type: Object,
+      required: false,
+    }
+  },
+  data() {
+    return {
+
+    }
+  },
+  mounted() {
+    this.gridLayout.index = this.gridLayout.layout.length;
+    this.getUsers()
+  },
+  methods: {
+    removeItem: function (val) {
+      const index = this.gridLayout.layout.map(item => item.i).indexOf(val);
+      this.gridLayout.layout.splice(index, 1);
+    },
+
+    async getUsers() {
+      let res = await axios.get("/api/users");
+      this.users = res.data.users;
+    },
+  }
+}
+</script>
+
+<style scoped>
+.layoutJSON {
+  background: #ddd;
+  border: 1px solid black;
+  margin-top: 10px;
+  padding: 10px;
+}
+.columns {
+  -moz-columns: 120px;
+  -webkit-columns: 120px;
+  columns: 120px;
+}
+/*************************************/
+.remove {
+  position: absolute;
+  right: 2px;
+  top: 0;
+  cursor: pointer;
+  z-index: 1000;
+}
+.vue-grid-item .resizing {
+  opacity: 0.9;
+}
+.vue-grid-item .static {
+  background: #cce;
+}
+.vue-grid-item .text {
+  font-size: 24px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
+.vue-grid-item .no-drag {
+  height: 100%;
+  width: 100%;
+}
+.vue-grid-item .minMax {
+  font-size: 12px;
+}
+.vue-grid-item .add {
+  cursor: pointer;
+}
+.vue-draggable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  padding: 0 8px 8px 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='5' cy='5' r='5' fill='#999999'/></svg>") no-repeat bottom right;
+  background-origin: content-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+</style>
