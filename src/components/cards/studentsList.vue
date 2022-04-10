@@ -1,14 +1,14 @@
 <template>
   <div>
-    <grid-layout :layout.sync="gridLayout.layout"
-                 :col-num="gridLayout.colNum"
+    <grid-layout :layout.sync="studentList.layout"
+                 :col-num="colNum"
                  :row-height="30"
-                 :is-draggable="gridLayout.draggable"
-                 :is-resizable="gridLayout.resizable"
+                 :is-draggable="true"
+                 :is-resizable="true"
                  :vertical-compact="true"
                  :use-css-transforms="false"
     >
-      <grid-item :key="item.i" v-for="item in gridLayout.layout"
+      <grid-item :key="item.i" v-for="(item, index) in studentList.layout"
                  :static="item.static"
                  :x="item.x"
                  :y="item.y"
@@ -28,7 +28,9 @@
             mdi-close
           </v-icon>
         </v-btn>
-        <card-item></card-item>
+        <card-item
+            :student="studentList.students[index]"
+        ></card-item>
       </grid-item>
     </grid-layout>
   </div>
@@ -46,29 +48,28 @@ export default {
     GridItem
   },
   props: {
-    gridLayout: {
+    studentList: {
       type: Object,
       required: false,
-    }
+    },
+    colNum: Number
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   mounted() {
-    this.gridLayout.index = this.gridLayout.layout.length;
-    this.getUsers()
+    this.studentList.index = this.studentList.layout.length;
+    this.getStudents()
   },
   methods: {
     removeItem: function (val) {
-      const index = this.gridLayout.layout.map(item => item.i).indexOf(val);
-      this.gridLayout.layout.splice(index, 1);
+      const index = this.studentList.layout.map(item => item.i).indexOf(val);
+      this.studentList.layout.splice(index, 1);
     },
 
-    async getUsers() {
-      let res = await axios.get("/api/users");
-      this.users = res.data.users;
+    async getStudents() {
+      let {data} = await axios.get("/api/users");
+      this.studentList.students = data.users;
     },
   }
 }

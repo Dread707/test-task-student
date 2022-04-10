@@ -4,8 +4,11 @@ import vuetify from './plugins/vuetify';
 import VueGridLayout from 'vue-grid-layout';
 import store from "@/store";
 import { makeServer } from "./server"
+import moment from "moment";
 
 Vue.config.productionTip = false
+
+Vue.prototype.$moment = moment;
 
 Vue.use(VueGridLayout)
 
