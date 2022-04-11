@@ -14,12 +14,6 @@ import Footer from "@/components/app/Footer";
 import Main from "@/components/Main";
 export default {
   components: { Main, Footer, Navbar },
-  data()
-  {
-    return  {
-
-    }
-  }
 }
 </script>
 <style>

@@ -4,7 +4,7 @@
                  :col-num="colNum"
                  :row-height="30"
                  :is-draggable="true"
-                 :is-resizable="true"
+                 :is-resizable="false"
                  :vertical-compact="true"
                  :use-css-transforms="false"
     >
@@ -16,7 +16,9 @@
                  :h="item.h"
                  :i="item.i"
       >
+        <v-fade-transition>
         <v-btn
+            v-show="visibleDeleteMode"
             class="mx-1 my-1 remove"
             fab
             dark
@@ -28,6 +30,7 @@
             mdi-close
           </v-icon>
         </v-btn>
+        </v-fade-transition>
         <card-item
             :student="studentList.students[index]"
         ></card-item>
@@ -52,10 +55,8 @@ export default {
       type: Object,
       required: false,
     },
-    colNum: Number
-  },
-  data() {
-    return {}
+    colNum: Number,
+    visibleDeleteMode: Boolean,
   },
   mounted() {
     this.studentList.index = this.studentList.layout.length;

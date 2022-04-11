@@ -42,6 +42,7 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-btn
+        @click="$emit('editMode')"
         fab
         dark
         small
