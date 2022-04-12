@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-4">
     <grid-layout :layout.sync="studentList.layout"
                  :col-num="colNum"
                  :row-height="30"
@@ -69,8 +69,14 @@ export default {
     },
 
     async getStudents() {
-      let {data} = await axios.get("/api/users");
-      this.studentList.students = data.users;
+      let {data} = await axios.get("http://localhost:3001/getStudents", {
+        params: {
+          _page: 1,
+          _limit: 12
+        }
+      });
+      this.studentList.students = data;
+      this.$emit('studentsCount', this.studentList.students.length)
     },
   }
 }

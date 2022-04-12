@@ -3,13 +3,27 @@
     <create-card
         :showCreateModal="showCreateModal"
         @closeCreateModal="showCreateModal = false"
-
     />
-    <cards
-        :studentList="studentList"
-        :colNum ="colNum"
-        :visibleDeleteMode="visibleDeleteMode"
-    />
+    <div class="progress-main grid-styles d-inline-flex justify-center" v-if="!isLoading">
+      <div class="d-flex flex-column">
+        <v-progress-circular
+            class="mb-2"
+            :size="50"
+            color="primary"
+            indeterminate
+        ></v-progress-circular>
+        <p>Загрузка</p>
+      </div>
+    </div>
+    <div class="grid-styles" v-if="isLoading">
+      <cards
+          @studentsCount="studentsCount($event)"
+          :studentList="studentList"
+          :colNum ="colNum"
+          :visibleDeleteMode="visibleDeleteMode"
+      />
+      <pagination/>
+    </div>
     <action-button
         @addCard="showCreateModal = !showCreateModal"
         @editMode="editMode"
@@ -23,32 +37,33 @@
 
 <script>
 import Cards from "@/components/cards/studentsList";
-import ActionButton from "@/components/buttons/action-button";
+import ActionButton from "@/components/buttons/actions/action-button";
 import {generateLayout} from "@/functions";
 import Snackbar from "@/components/notification/snackbar";
 import CreateCard from "@/components/CRUD/createCard";
+import Pagination from "@/components/buttons/pagination/pagination";
 
 export default {
   name: "Main",
-  components: {CreateCard, Snackbar, ActionButton, Cards},
+  components: {Pagination, CreateCard, Snackbar, ActionButton, Cards},
   data: () => ({
     studentList: {
       layout: [],
       index: 0,
       students: [],
     },
-    layoutLength: 20,
     widthStudentCard: 2,
-    heightStudentCard: 13,
+    heightStudentCard: 12,
     colNum: 12,
     visibleDeleteMode: false,
     notification: {},
-    showCreateModal: false
+    showCreateModal: false,
+    isLoading: true,
   }),
-  mounted() {
-    this.studentList.layout = generateLayout(this.layoutLength, this.widthStudentCard, this.heightStudentCard)
-  },
   methods: {
+    studentsCount(evt) {
+      this.studentList.layout = generateLayout(evt, this.widthStudentCard, this.heightStudentCard)
+    },
     editMode() {
       this.visibleDeleteMode = !this.visibleDeleteMode
 
@@ -76,5 +91,22 @@ export default {
 </script>
 
 <style scoped>
+.progress-main {
+  width: 100%;
+  padding: 40vh;
+}
+
+.progress-main > div {
+  width: 100px;
+  height: 100px;
+  align-items: center;
+}
+
+.grid-styles {
+  scrollbar-width: thin;
+  overflow: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 100px) !important;
+}
 
 </style>

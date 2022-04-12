@@ -1,10 +1,10 @@
 <template>
   <v-footer padless>
     <v-col
-        class="text-center"
+        class="primary lighten py-4 text-center white--text"
         cols="12"
     >
-      {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+      {{ new Date().getFullYear() }} - Github
     </v-col>
   </v-footer>
 </template>

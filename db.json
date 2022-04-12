@@ -1,0 +1,411 @@
+{
+  "getStudents": [
+      {
+        "section": "Занимательная информатика",
+        "birthdayDate": "2012-06-28T04:17:04.261Z",
+        "phoneNumber": "+7(982)583-01-86",
+        "email": "Pete_Bauch45@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/anjaistefan54db69351951e.png",
+        "name": "Валерия Лихачева",
+        "gender": "0",
+        "id": "1"
+      },
+      {
+        "section": "Техническое моделирование",
+        "birthdayDate": "2009-11-09T01:04:44.745Z",
+        "phoneNumber": "+7(910)235-05-39",
+        "email": "Curtis87@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/sindy565496ac27e2d.png",
+        "name": "Екатерина Кузьмина",
+        "gender": "0",
+        "id": "2"
+      },
+      {
+        "section": "Компьютерный дизайн",
+        "birthdayDate": "2012-01-30T21:26:46.952Z",
+        "phoneNumber": "+7(923)024-16-72",
+        "email": "Jamaal_Haley@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/eduaryein56801521a784e.png",
+        "name": "Иван Алексеев",
+        "gender": "1",
+        "id": "3"
+      },
+      {
+        "section": "Мини-футбол",
+        "birthdayDate": "2012-03-16T04:53:35.909Z",
+        "phoneNumber": "+7(906)621-87-98",
+        "email": "Emiliano_Rice65@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/estefani.cocatorrico5460cbfd61156.png",
+        "name": "Алина Алексеева",
+        "gender": "0",
+        "id": "4"
+      },
+      {
+        "section": "Гимнастика",
+        "birthdayDate": "2009-01-05T02:20:22.191Z",
+        "phoneNumber": "+7(905)387-28-99",
+        "email": "Savion_Klocko@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/mvelasquez5626afd62d6bb.png",
+        "name": "Алла Лапина",
+        "gender": "0",
+        "id": "5"
+      },
+      {
+        "section": "Шахматы",
+        "birthdayDate": "2006-09-05T00:15:35.640Z",
+        "phoneNumber": "+7(971)265-29-72",
+        "email": "Ethyl25@gmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/904019536902fdda109.png",
+        "name": "Валентин Ермаков",
+        "gender": "0",
+        "id": "6"
+      },
+      {
+        "section": "Баскетбол",
+        "birthdayDate": "2005-07-06T04:21:44.763Z",
+        "phoneNumber": "+7(928)895-39-68",
+        "email": "Jessy_Cormier@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/AlberTenez56103f991c1d5.png",
+        "name": "Арина Харитонова",
+        "gender": "0",
+        "id": "7"
+      },
+      {
+        "section": "Каратэ",
+        "birthdayDate": "2006-01-12T17:59:51.450Z",
+        "phoneNumber": "+7(922)088-88-22",
+        "email": "Greta1@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/tenopessetto52eb2e9536294.png",
+        "name": "Артём Гришин",
+        "gender": "1",
+        "id": "8"
+      },
+      {
+        "section": "Настольный теннис",
+        "birthdayDate": "2008-01-20T22:40:04.236Z",
+        "phoneNumber": "+7(903)566-88-10",
+        "email": "Amari.Cruickshank24@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/.127154d7f4fb5a8ea.png",
+        "name": "Наталья Рябова",
+        "gender": "0",
+        "id": "9"
+      },
+      {
+        "section": "Волейбол",
+        "birthdayDate": "2004-02-28T05:58:32.716Z",
+        "phoneNumber": "+7(910)670-08-04",
+        "email": "Francis95@ya.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/crux52165e3cc479e.png",
+        "name": "Наталья Кабанова",
+        "gender": "0",
+        "id": "10"
+      },
+      {
+        "section": "Легкая атлетика",
+        "birthdayDate": "2010-12-25T12:35:44.309Z",
+        "phoneNumber": "+7(956)889-59-22",
+        "email": "Arnoldo.Russel42@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/KnufflPuffl52b61c80ad141.png",
+        "name": "Анастасия Дмитриева",
+        "gender": "0",
+        "id": "11"
+      },
+      {
+        "section": "Хоровая студия «Созвучие»",
+        "birthdayDate": "2009-03-15T12:39:20.143Z",
+        "phoneNumber": "+7(952)543-78-87",
+        "email": "Daphne.Collier@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/stefan911559fc69a01a4d.png",
+        "name": "Александр Николаев",
+        "gender": "1",
+        "id": "12"
+      },
+      {
+        "section": "Юный дизайнер",
+        "birthdayDate": "2011-01-02T22:06:52.756Z",
+        "phoneNumber": "+7(982)969-54-96",
+        "email": "Aimee9@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/stefan.prangenberg51d824c3be4c7.png",
+        "name": "Виктор Панов",
+        "gender": "1",
+        "id": "13"
+      },
+      {
+        "section": "Театральная студия «Поворот»",
+        "birthdayDate": "2010-07-28T15:43:40.887Z",
+        "phoneNumber": "+7(943)738-48-54",
+        "email": "Kody.Schuster4@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/sigmund.titi52d422d9bb2b4.png",
+        "name": "Герман Козлов",
+        "gender": "1",
+        "id": "14"
+      },
+      {
+        "section": "Прикладное творчество «Мягкая игрушка»",
+        "birthdayDate": "2011-04-30T05:52:47.895Z",
+        "phoneNumber": "+7(996)123-64-09",
+        "email": "Tod78@ya.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/stefanie_r_b534ac2a83f5fd.png",
+        "name": "Римма Новикова",
+        "gender": "0",
+        "id": "15"
+      },
+      {
+        "section": "Танцевальный ансамбль «Визави»",
+        "birthdayDate": "2009-11-16T21:39:17.912Z",
+        "phoneNumber": "+7(937)105-97-77",
+        "email": "Harley_Haag60@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/estefanycruz98537d5580495be.png",
+        "name": "Арина Коновалова",
+        "gender": "0",
+        "id": "16"
+      },
+      {
+        "section": "Бисероплетение",
+        "birthdayDate": "2008-02-09T12:39:26.702Z",
+        "phoneNumber": "+7(996)704-81-03",
+        "email": "Christelle.Dare89@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/radosava.micicrabrenovic55b7c8703d320.png",
+        "name": "Анна Кириллова",
+        "gender": "0",
+        "id": "17"
+      },
+      {
+        "section": "География в городе",
+        "birthdayDate": "2007-10-18T04:28:43.226Z",
+        "phoneNumber": "+7(927)883-66-84",
+        "email": "Zoila47@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/bifou5242b8a2cf879.png",
+        "name": "Альберт Назаров",
+        "gender": "1",
+        "id": "18"
+      },
+      {
+        "section": "Настольные игры",
+        "birthdayDate": "2011-02-14T13:42:51.734Z",
+        "phoneNumber": "+7(995)565-90-12",
+        "email": "Leann.Fisher@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/QueenOfIce53ea724b4c5ee.png",
+        "name": "Варвара Терентьева",
+        "gender": "0",
+        "id": "19"
+      },
+      {
+        "section": "История в памятниках",
+        "birthdayDate": "2011-12-15T19:36:51.704Z",
+        "phoneNumber": "+7(987)801-39-04",
+        "email": "Benedict.Roberts@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/steff559eda40de704.png",
+        "name": "Зоя Лыткина",
+        "gender": "0",
+        "id": "20"
+      },
+      {
+        "section": "Юный волонтеры",
+        "birthdayDate": "2008-10-17T12:53:21.445Z",
+        "phoneNumber": "+7(987)334-03-88",
+        "email": "Hyman95@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/stefan.beukes.375507e50d4c0a7.png",
+        "name": "Эдуард Силин",
+        "gender": "1",
+        "id": "21"
+      },
+      {
+        "section": "Диалог культур",
+        "birthdayDate": "2007-12-21T04:11:21.295Z",
+        "phoneNumber": "+7(976)136-50-31",
+        "email": "Sylvan.Johns@gmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/MissGriffith53442f952f78a.png",
+        "name": "Евгения Киселева",
+        "gender": "0",
+        "id": "22"
+      },
+      {
+        "section": "Этикет и искусство общения",
+        "birthdayDate": "2009-04-17T16:32:08.336Z",
+        "phoneNumber": "+7(951)285-70-66",
+        "email": "Royal57@gmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/Tinkie77754ca70ad80f92.png",
+        "name": "Леонид Кондратьев",
+        "gender": "1",
+        "id": "23"
+      },
+      {
+        "section": "Юный правовед",
+        "birthdayDate": "2008-09-30T18:09:55.875Z",
+        "phoneNumber": "+7(901)295-27-42",
+        "email": "Karina83@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/mimielaclasse567acc3a97276.png",
+        "name": "Борис Тихонов",
+        "gender": "1",
+        "id": "24"
+      },
+      {
+        "section": "Юный защитник",
+        "birthdayDate": "2009-10-03T07:06:02.403Z",
+        "phoneNumber": "+7(968)092-38-65",
+        "email": "Elvis4@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/stefaan.dutry5352edfeadcfd.png",
+        "name": "Евгений Морозов",
+        "gender": "1",
+        "id": "25"
+      },
+      {
+        "section": "Экология жизни",
+        "birthdayDate": "2011-05-26T22:27:07.659Z",
+        "phoneNumber": "+7(972)348-86-65",
+        "email": "Conrad.Roberts@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/tester015524182df9a3f3.png",
+        "name": "Герман Абрамов",
+        "gender": "1",
+        "id": "26"
+      },
+      {
+        "section": "Занимательная информатика",
+        "birthdayDate": "2010-10-08T08:46:35.619Z",
+        "phoneNumber": "+7(940)385-67-29",
+        "email": "Yessenia9@hotmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/lisabloom7555dc583be6bd2.png",
+        "name": "Алёна Попова",
+        "gender": "0",
+        "id": "27"
+      },
+      {
+        "section": "Техническое моделирование",
+        "birthdayDate": "2013-01-22T03:18:02.031Z",
+        "phoneNumber": "+7(917)160-27-24",
+        "email": "Bianka11@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/michelle.debruyn2352d6eed257b8a.png",
+        "name": "Ангелина Ширяева",
+        "gender": "0",
+        "id": "28"
+      },
+      {
+        "section": "Компьютерный дизайн",
+        "birthdayDate": "2010-12-21T02:10:44.256Z",
+        "phoneNumber": "+7(952)847-91-47",
+        "email": "Lizeth_Prohaska@ya.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/fleicap52420cca01289.png",
+        "name": "Станислав Силин",
+        "gender": "1",
+        "id": "29"
+      },
+      {
+        "section": "Мини-футбол",
+        "birthdayDate": "2009-12-21T10:24:21.100Z",
+        "phoneNumber": "+7(930)686-34-11",
+        "email": "Florence_Orn@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/maiyo52d99baa98a3a.png",
+        "name": "Альберт Архипов",
+        "gender": "1",
+        "id": "30"
+      },
+      {
+        "section": "Гимнастика",
+        "birthdayDate": "2011-01-06T16:49:12.086Z",
+        "phoneNumber": "+7(915)158-32-04",
+        "email": "Selena_Keebler@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/srebrny5375f9d43f326.png",
+        "name": "Валерий Соколов",
+        "gender": "1",
+        "id": "31"
+      },
+      {
+        "section": "Шахматы",
+        "birthdayDate": "2012-03-19T20:48:53.758Z",
+        "phoneNumber": "+7(992)161-96-81",
+        "email": "Angel56@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/itjhstudent56a79b1a29dcc.png",
+        "name": "Анжелика Блохина",
+        "gender": "0",
+        "id": "32"
+      },
+      {
+        "section": "Баскетбол",
+        "birthdayDate": "2010-07-31T16:56:16.869Z",
+        "phoneNumber": "+7(984)541-47-28",
+        "email": "Roxanne11@ya.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/mohdharisonly52fa9c1b9cde3.png",
+        "name": "Станислав Сидоров",
+        "gender": "1",
+        "id": "33"
+      },
+      {
+        "section": "Каратэ",
+        "birthdayDate": "2012-09-28T11:12:41.678Z",
+        "phoneNumber": "+7(924)442-60-87",
+        "email": "Declan.OConner@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/itjhstudent56aa37dfc8505.png",
+        "name": "Анфиса Русакова",
+        "gender": "0",
+        "id": "34"
+      },
+      {
+        "section": "Настольный теннис",
+        "birthdayDate": "2011-02-18T08:04:38.210Z",
+        "phoneNumber": "+7(972)581-48-63",
+        "email": "Vivien30@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/fany.quen53f997f38a418.png",
+        "name": "Галина Игнатьева",
+        "gender": "0",
+        "id": "35"
+      },
+      {
+        "section": "Волейбол",
+        "birthdayDate": "2011-10-27T06:03:32.368Z",
+        "phoneNumber": "+7(942)854-81-59",
+        "email": "Micah_Rohan58@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/AlberTenez56103f991c1d5.png",
+        "name": "Татьяна Соколова",
+        "gender": "0",
+        "id": "36"
+      },
+      {
+        "section": "Легкая атлетика",
+        "birthdayDate": "2009-08-03T21:15:24.910Z",
+        "phoneNumber": "+7(956)883-93-81",
+        "email": "Georgiana.Leannon36@yandex.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/stefanie.wiesemann.90527e27e6dbe5b.png",
+        "name": "Варвара Русакова",
+        "gender": "0",
+        "id": "37"
+      },
+      {
+        "section": "Хоровая студия «Созвучие»",
+        "birthdayDate": "2008-06-04T00:36:23.719Z",
+        "phoneNumber": "+7(937)447-71-06",
+        "email": "Glen.Jerde14@gmail.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/smsullivan72053b6160b5cab5.png",
+        "name": "Елена Носова",
+        "gender": "0",
+        "id": "38"
+      },
+      {
+        "section": "Юный дизайнер",
+        "birthdayDate": "2012-03-17T22:29:11.063Z",
+        "phoneNumber": "+7(982)658-91-16",
+        "email": "Ellie40@yahoo.com",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/ericssm550f8a6186bbd.png",
+        "name": "Арсений Шестаков",
+        "gender": "1",
+        "id": "39"
+      },
+      {
+        "section": "Театральная студия «Поворот»",
+        "birthdayDate": "2007-03-14T09:42:26.318Z",
+        "phoneNumber": "+7(971)744-55-16",
+        "email": "Jayce.Ratke7@mail.ru",
+        "avatarUrl": "https://pickaface.net/gallery/avatar/20110617_225108_1757_Stefee.png",
+        "name": "Тамара Ковалева",
+        "gender": "0",
+        "id": "40"
+      }
+    ],
+
+  "getSections": ["Занимательная информатика", "Техническое моделирование", "Компьютерный дизайн",
+    "Мини-футбол", "Гимнастика", "Шахматы", "Баскетбол", "Каратэ", "Настольный теннис", "Волейбол",
+    "Легкая атлетика", "Хоровая студия «Созвучие»", "Юный дизайнер", "Театральная студия «Поворот»",
+    "Прикладное творчество «Мягкая игрушка»", "Танцевальный ансамбль «Визави»", "Бисероплетение",
+    "География в городе", "Настольные игры", "История в памятниках", "Юный волонтеры",
+    "Диалог культур", "Этикет и искусство общения", "Юный правовед", "Юный защитник", "Экология жизни"]
+}

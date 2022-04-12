@@ -46,6 +46,7 @@
                         @keypress="filterKeyboard($event, '[А-Яа-яЁё ]+')"
                         label="Имя"
                         required
+                        :rules="[v => !!v || 'Укажите ваше имя']"
                         clearable
                     ></v-text-field>
                   </v-col>
@@ -53,6 +54,7 @@
                     <v-text-field
                         @keypress="filterKeyboard($event, '[А-Яа-яЁё ]+')"
                         label="Фамилия"
+                        :rules="[v => !!v || 'Укажите вашу фамилию']"
                         required
                         clearable
                     ></v-text-field>
@@ -95,6 +97,7 @@
                 <v-row>
                   <v-col sm="12">
                     <v-select
+                        :rules="[v => !!v || 'Укажите секцию']"
                         :items="sections"
                         label="Секция"
                         dense
@@ -102,8 +105,6 @@
                   </v-col>
                 </v-row>
               </v-col>
-
-
             </v-row>
           </v-container>
         </v-card-text>
@@ -131,6 +132,7 @@
 
 <script>
 import {filterKeyboard} from "@/functions"
+import axios from "axios";
 
 export default {
   name: "createCard",
@@ -142,26 +144,28 @@ export default {
     date: '',
     menu: false,
     rules: {
-      required: value => !!value || 'Правильно',
+      required: value => !!value || 'Укажите ваш e-mail',
       email: value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         return pattern.test(value) || 'Неправильно набран e-mail.'
       }
     },
-    sections: ["Занимательная информатика", "Техническое моделирование", "Компьютерный дизайн",
-      "Мини-футбол", "Гимнастика", "Шахматы", "Баскетбол", "Каратэ", "Настольный теннис", "Волейбол",
-      "Легкая атлетика", "Хоровая студия «Созвучие»", "Юный дизайнер", "Театральная студия «Поворот»",
-      "Прикладное творчество «Мягкая игрушка»", "Танцевальный ансамбль «Визави»", "Бисероплетение",
-      "География в городе", "Настольные игры", "История в памятниках", "Юный волонтеры",
-      "Диалог культур", "Этикет и искусство общения", "Юный правовед", "Юный защитник", "Экология жизни"]
+    sections: []
   }),
+  mounted() {
+    this.getSections()
+  },
   computed: {
     computedDateFormatted () {
       return this.date ? this.$moment(this.date).format('DD.MM.YYYY') : ''
     },
   },
   methods: {
-    filterKeyboard
+    filterKeyboard,
+    async getSections() {
+      let {data} = await axios.get("http://localhost:3001/getSections");
+      this.sections = data;
+    }
   }
 
 }

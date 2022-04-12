@@ -76,6 +76,6 @@ export default {
 <style>
 #app .v-speed-dial {
   position: fixed;
+  z-index: 100;
 }
-
 </style>

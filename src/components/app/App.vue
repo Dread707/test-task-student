@@ -2,8 +2,8 @@
   <div>
     <v-app id="app">
       <navbar></navbar>
-      <Main></Main>
-      <Footer class="fixed-bottom"></Footer>
+      <Main class="main-container"></Main>
+      <Footer></Footer>
     </v-app>
 
   </div>
@@ -17,6 +17,8 @@ export default {
 }
 </script>
 <style>
+html { overflow:  hidden; }
+
 .fixed-bottom {
   position:fixed;
   right:0;
