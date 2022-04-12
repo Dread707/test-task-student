@@ -57,9 +57,20 @@ export default {
     },
     colNum: Number,
     visibleDeleteMode: Boolean,
+    page: {
+      type: Number,
+      default: 1
+    }
   },
   mounted() {
     this.studentList.index = this.studentList.layout.length;
+  },
+  watch: {
+    page() {
+      this.getStudents()
+    }
+  },
+  created() {
     this.getStudents()
   },
   methods: {
@@ -71,7 +82,7 @@ export default {
     async getStudents() {
       let {data} = await axios.get("http://localhost:3001/getStudents", {
         params: {
-          _page: 1,
+          _page: this.page,
           _limit: 12
         }
       });

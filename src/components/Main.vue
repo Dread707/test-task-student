@@ -1,9 +1,17 @@
 <template>
   <div>
-    <create-card
-        :showCreateModal="showCreateModal"
-        @closeCreateModal="showCreateModal = false"
-    />
+    <v-row justify="center">
+      <v-dialog
+          v-model="showCreateModal"
+          persistent
+          max-width="800px"
+      >
+        <create-card
+            @closeCreateModal="showCreateModal = false"
+        />
+      </v-dialog>
+    </v-row>
+
     <div class="progress-main grid-styles d-inline-flex justify-center" v-if="!isLoading">
       <div class="d-flex flex-column">
         <v-progress-circular
@@ -15,16 +23,34 @@
         <p>Загрузка</p>
       </div>
     </div>
-    <div class="grid-styles" v-if="isLoading">
+    <div class="grid-styles" v-if="isLoading && displayOption === 'grid'">
       <cards
           @studentsCount="studentsCount($event)"
           :studentList="studentList"
           :colNum ="colNum"
           :visibleDeleteMode="visibleDeleteMode"
+          :page="selectedPage"
       />
-      <pagination/>
+      <pagination
+          @page="getSelectedPage($event)"
+      />
+    </div>
+    <div class="grid-styles" v-if="isLoading && displayOption === 'table'">
+<!--      <cards-->
+<!--          @studentsCount="studentsCount($event)"-->
+<!--          :studentList="studentList"-->
+<!--          :colNum ="colNum"-->
+<!--          :visibleDeleteMode="visibleDeleteMode"-->
+<!--          :page="selectedPage"-->
+<!--      />-->
+      <Table/>
+
+      <pagination
+          @page="getSelectedPage($event)"
+      />
     </div>
     <action-button
+        v-show="displayOption === 'grid'"
         @addCard="showCreateModal = !showCreateModal"
         @editMode="editMode"
     />
@@ -42,10 +68,11 @@ import {generateLayout} from "@/functions";
 import Snackbar from "@/components/notification/snackbar";
 import CreateCard from "@/components/CRUD/createCard";
 import Pagination from "@/components/buttons/pagination/pagination";
+import Table from "@/components/table/table";
 
 export default {
   name: "Main",
-  components: {Pagination, CreateCard, Snackbar, ActionButton, Cards},
+  components: {Table, Pagination, CreateCard, Snackbar, ActionButton, Cards},
   data: () => ({
     studentList: {
       layout: [],
@@ -59,8 +86,13 @@ export default {
     notification: {},
     showCreateModal: false,
     isLoading: true,
+    selectedPage: 1,
+    displayOption: 'table',
   }),
   methods: {
+    getSelectedPage(page) {
+      this.selectedPage = page
+    },
     studentsCount(evt) {
       this.studentList.layout = generateLayout(evt, this.widthStudentCard, this.heightStudentCard)
     },
