@@ -1,9 +1,16 @@
 <template>
   <div>
     <v-app id="app">
-      <navbar></navbar>
-      <Main class="main-container"></Main>
-      <Footer></Footer>
+      <navbar
+          @displayOption="displayOption = !displayOption"
+
+      />
+      <Main
+          :displayOption="displayOption"
+          class="main-container"
+
+      />
+      <Footer/>
     </v-app>
 
   </div>
@@ -14,6 +21,9 @@ import Footer from "@/components/app/Footer";
 import Main from "@/components/Main";
 export default {
   components: { Main, Footer, Navbar },
+  data: () => ({
+    displayOption: false,
+  }),
 }
 </script>
 <style>

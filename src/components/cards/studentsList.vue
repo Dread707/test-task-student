@@ -40,16 +40,11 @@
 </template>
 
 <script>
-import { GridLayout, GridItem } from "vue-grid-layout"
 import CardItem from "@/components/cards/card/card-item";
 import axios from "axios";
 export default {
   name: "cards",
-  components: {
-    CardItem,
-    GridLayout,
-    GridItem
-  },
+  components: {CardItem},
   props: {
     studentList: {
       type: Object,

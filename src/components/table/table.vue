@@ -2,7 +2,9 @@
   <v-data-table
       :headers="headers"
       :items="students"
-      sort-by="calories"
+      show-expand
+      :single-expand="false"
+      sort-by="name"
       class="elevation-1 mt-4"
       hide-default-footer
       :items-per-page="13"
@@ -25,6 +27,9 @@
                 v-bind="attrs"
                 v-on="on"
             >
+              <v-icon left>
+                mdi-plus
+              </v-icon>
               Новый ученик
             </v-btn>
           </template>
@@ -44,6 +49,11 @@
           </v-card>
         </v-dialog>
       </v-toolbar>
+    </template>
+    <template v-slot:expanded-item="{ headers, item }">
+      <td :colspan="headers.length">
+        {{ item.name }}
+      </td>
     </template>
     <template v-slot:item.birthdayDate="{ item }">
       {{ $moment(item.birthdayDate).format('DD.MM.YYYY') }}
@@ -79,7 +89,7 @@ import axios from "axios";
 import CreateCard from "@/components/CRUD/createCard";
 
 export default {
-  name: "table",
+  name: "Table",
   components: {CreateCard},
   data: () => ({
     showCreateTableModal: false,
@@ -109,11 +119,11 @@ export default {
       protein: 0,
     },
   }),
-
-  computed: {
-    formTitle () {
-      return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-    },
+  props: {
+    page: {
+      type: Number,
+      default: 1
+    }
   },
 
   watch: {
@@ -123,6 +133,9 @@ export default {
     dialogDelete (val) {
       val || this.closeDelete()
     },
+    page() {
+      this.getStudentsTable()
+    }
   },
 
   created () {
@@ -188,5 +201,9 @@ export default {
 <style scoped>
 .v-application .elevation-1 {
   box-shadow: none !important;
+}
+
+.v-data-table tbody tr.v-data-table__expanded__content {
+  box-shadow: 0;
 }
 </style>

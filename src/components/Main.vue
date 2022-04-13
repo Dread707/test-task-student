@@ -23,7 +23,7 @@
         <p>Загрузка</p>
       </div>
     </div>
-    <div class="grid-styles" v-if="isLoading && displayOption === 'grid'">
+    <div class="grid-styles" v-if="isLoading && !displayOption">
       <cards
           @studentsCount="studentsCount($event)"
           :studentList="studentList"
@@ -35,22 +35,17 @@
           @page="getSelectedPage($event)"
       />
     </div>
-    <div class="grid-styles" v-if="isLoading && displayOption === 'table'">
-<!--      <cards-->
-<!--          @studentsCount="studentsCount($event)"-->
-<!--          :studentList="studentList"-->
-<!--          :colNum ="colNum"-->
-<!--          :visibleDeleteMode="visibleDeleteMode"-->
-<!--          :page="selectedPage"-->
-<!--      />-->
-      <Table/>
+    <div class="grid-styles" v-if="isLoading && displayOption">
+      <Table
+          :page="selectedPage"
+      />
 
       <pagination
           @page="getSelectedPage($event)"
       />
     </div>
     <action-button
-        v-show="displayOption === 'grid'"
+        v-show="!displayOption"
         @addCard="showCreateModal = !showCreateModal"
         @editMode="editMode"
     />
@@ -73,6 +68,9 @@ import Table from "@/components/table/table";
 export default {
   name: "Main",
   components: {Table, Pagination, CreateCard, Snackbar, ActionButton, Cards},
+  props: {
+    displayOption: Boolean
+  },
   data: () => ({
     studentList: {
       layout: [],
@@ -87,7 +85,6 @@ export default {
     showCreateModal: false,
     isLoading: true,
     selectedPage: 1,
-    displayOption: 'table',
   }),
   methods: {
     getSelectedPage(page) {

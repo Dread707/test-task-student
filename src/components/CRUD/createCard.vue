@@ -14,22 +14,28 @@
                 md="4"
             >
               <v-avatar
-                  v-if="!isAvatarLoad"
+                  v-if="!showPreview"
                   color="indigo"
                   size="84"
               >
-                <a>
+                <input
+                    type="file"
+                    id="field-file"
+                    ref="file"
+                    style="display: none"
+                    accept="image/*"
+                    @change="handleFileUpload()">
+                <a @click="handleFileClick">
                   <v-icon dark>
                     mdi-plus
                   </v-icon>
                 </a>
-
               </v-avatar>
 
-              <v-avatar size="84" v-if="isAvatarLoad">
+              <v-avatar size="84" v-if="showPreview">
                 <img
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
-                    alt="John"
+                    :src="imagePreview"
+                    alt="Аватар"
                 >
               </v-avatar>
             </v-col>
@@ -40,6 +46,7 @@
                 <v-text-field
                     @keypress="filterKeyboard($event, '[А-Яа-яЁё ]+')"
                     label="Имя"
+                    v-model="firstName"
                     required
                     :rules="[v => !!v || 'Укажите имя']"
                     clearable
@@ -49,6 +56,7 @@
                 <v-text-field
                     @keypress="filterKeyboard($event, '[А-Яа-яЁё ]+')"
                     label="Фамилия"
+                    v-model="lastName"
                     :rules="[v => !!v || 'Укажите фамилию']"
                     required
                     clearable
@@ -60,6 +68,7 @@
                 <v-text-field
                     clearable
                     label="Почта"
+                    v-model="newStudent.email"
                     :rules="[rules.required, rules.email]"
                     required
                     placeholder="ivanov@example.ru"
@@ -79,25 +88,37 @@
                         readonly
                         v-bind="attrs"
                         v-on="on"
-                        @click:clear="date = null"
+                        @click:clear="newStudent.birthdayDate = null"
                         :rules="[v => !!v || 'Укажите дату рождения']"
                     ></v-text-field>
                   </template>
                   <v-date-picker
-                      v-model="date"
+                      v-model="newStudent.birthdayDate"
                       @change="menu = false"
+                      locale="ru-ru"
                   ></v-date-picker>
                 </v-menu>
               </v-col>
             </v-row>
             <v-row>
-              <v-col sm="12">
+              <v-col sm="6">
                 <v-select
+                    v-model="newStudent.section"
                     :rules="[v => !!v || 'Укажите секцию']"
                     :items="sections"
                     label="Секция"
                     dense
                 ></v-select>
+              </v-col>
+              <v-col sm="6">
+                <v-text-field
+                    clearable
+                    v-mask="'+7(9##)###-##-##'"
+                    label="Номер телефона"
+                    v-model="newStudent.phoneNumber"
+                    :rules="[v => !!v || 'Укажите номер телефона']"
+                    required
+                ></v-text-field>
               </v-col>
             </v-row>
           </v-col>
@@ -110,6 +131,7 @@
             >
               <v-textarea
                   solo
+                  v-model="newStudent.commmentInfo"
                   name="input-7-4"
                   label="Напишите о себе и своих достижения"
               ></v-textarea>
@@ -123,14 +145,14 @@
       <v-btn
           color="blue darken-1"
           text
-          @click="$emit('closeCreateModal')"
+          @click="cancelAddStudent"
       >
         Отменить
       </v-btn>
       <v-btn
           color="green darken-1"
           text
-          @click="!showCreateModal"
+          @click="addStudent"
       >
         Сохранить
       </v-btn>
@@ -148,8 +170,11 @@ export default {
     showCreateModal: Boolean,
   },
   data: () => ({
-    isAvatarLoad: false,
-    date: '',
+    showPreview: false,
+    imagePreview: '',
+    firstName: '',
+    lastName: '',
+    newStudent: {},
     menu: false,
     rules: {
       required: value => !!value || 'Укажите e-mail',
@@ -158,21 +183,64 @@ export default {
         return pattern.test(value) || 'Неправильно набран e-mail.'
       }
     },
-    sections: []
+    sections: [],
   }),
   mounted() {
-    this.getSections()
+    this.getSections();
   },
   computed: {
     computedDateFormatted () {
-      return this.date ? this.$moment(this.date).format('DD.MM.YYYY') : ''
+      return this.newStudent.birthdayDate ? this.$moment(this.newStudent.birthdayDate).format('DD.MM.YYYY') : ''
+    },
+    computedName() {
+      return `${this.firstName} ${this.lastName}`
     },
   },
+  watch: {
+    computedName(val) {
+      this.newStudent.name = val
+    }
+  },
+
   methods: {
     filterKeyboard,
     async getSections() {
       let {data} = await axios.get("http://localhost:3001/getSections");
       this.sections = data;
+    },
+    handleFileClick() {
+      this.$refs.file.click()
+    },
+    handleFileUpload() {
+      this.newStudent.avatarUrl = this.$refs.file.files[0];
+      let reader  = new FileReader();
+      reader.addEventListener("load", function () {
+        this.showPreview = true;
+        this.imagePreview = reader.result;
+      }.bind(this), false);
+      if( this.newStudent.avatarUrl ){
+        if ( /\.(jpe?g|png|gif)$/i.test( this.newStudent.avatarUrl.name ) ) {
+          reader.readAsDataURL( this.newStudent.avatarUrl );
+        }
+      }
+    },
+    async addStudent() {
+      await axios.post("http://localhost:3001/getStudents", this.newStudent)
+          .then(() => {
+            this.showPreview = false;
+            this.imagePreview = ''
+            this.newStudent = {}
+            this.$emit('closeCreateModal')
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+    cancelAddStudent() {
+      this.showPreview = false;
+      this.imagePreview = ''
+      this.newStudent = {}
+      this.$emit('closeCreateModal')
     }
   }
 
@@ -180,5 +248,7 @@ export default {
 </script>
 
 <style scoped>
-
+.v-input {
+  padding-top: 12px !important;
+}
 </style>

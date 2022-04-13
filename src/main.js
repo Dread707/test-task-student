@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './components/app/App.vue'
 import vuetify from './plugins/vuetify';
-import VueGridLayout from 'vue-grid-layout';
+import VueGridLayout, {GridItem, GridLayout } from 'vue-grid-layout';
+import VueTheMask from 'vue-the-mask'
 import store from "@/store";
 // import { makeServer } from "./server"
 import moment from "moment";
@@ -11,6 +12,10 @@ Vue.config.productionTip = false
 Vue.prototype.$moment = moment;
 
 Vue.use(VueGridLayout)
+Vue.use(VueTheMask)
+
+Vue.component('grid-item', GridItem)
+Vue.component('grid-layout', GridLayout)
 
 // if (process.env.NODE_ENV === "development") {
 //   makeServer()
