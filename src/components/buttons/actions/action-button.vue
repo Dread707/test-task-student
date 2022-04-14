@@ -30,6 +30,7 @@
           dark
           small
           color="green"
+          @click="$emit('editMode')"
       >
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
@@ -43,7 +44,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <v-btn
-          @click="$emit('editMode')"
+          @click="$emit('deleteMode')"
           fab
           dark
           small

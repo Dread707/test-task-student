@@ -201,7 +201,6 @@ export default {
       this.newStudent.name = val
     }
   },
-
   methods: {
     filterKeyboard,
     async getSections() {
@@ -231,9 +230,13 @@ export default {
             this.imagePreview = ''
             this.newStudent = {}
             this.$emit('closeCreateModal')
+            this.$toast.success("Данные успешно сохранены");
+            console.log(this.$refs)
+            // this.$refs.ref.studentCards.getStudents()
           })
           .catch(function (error) {
             console.log(error);
+            this.$toast.error("Ошибка сохраненения данных");
           });
     },
     cancelAddStudent() {

@@ -1,21 +1,25 @@
-import Vue from 'vue'
-import App from './components/app/App.vue'
+import Vue from 'vue';
+import App from './components/app/App.vue';
 import vuetify from './plugins/vuetify';
 import VueGridLayout, {GridItem, GridLayout } from 'vue-grid-layout';
-import VueTheMask from 'vue-the-mask'
+import VueTheMask from 'vue-the-mask';
+import Toast from "vue-toastification";
 import store from "@/store";
 // import { makeServer } from "./server"
 import moment from "moment";
 
-Vue.config.productionTip = false
+import "vue-toastification/dist/index.css";
+
+Vue.config.productionTip = false;
 
 Vue.prototype.$moment = moment;
 
-Vue.use(VueGridLayout)
-Vue.use(VueTheMask)
+Vue.use(VueGridLayout);
+Vue.use(VueTheMask);
+Vue.use(Toast, {maxToasts: 3,});
 
-Vue.component('grid-item', GridItem)
-Vue.component('grid-layout', GridLayout)
+Vue.component('grid-item', GridItem);
+Vue.component('grid-layout', GridLayout);
 
 // if (process.env.NODE_ENV === "development") {
 //   makeServer()

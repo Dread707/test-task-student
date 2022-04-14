@@ -24,10 +24,26 @@
             dark
             x-small
             color="error"
-            @click="removeItem(item.i)"
+            @click="removeItem(studentList.students[index].id)"
         >
           <v-icon dark>
             mdi-close
+          </v-icon>
+        </v-btn>
+        </v-fade-transition>
+
+        <v-fade-transition>
+        <v-btn
+            v-show="visibleEditMode"
+            class="mx-1 my-1 remove"
+            fab
+            dark
+            x-small
+            color="success"
+            @click="editModal(studentList.students[index])"
+        >
+          <v-icon dark>
+            mdi-pencil
           </v-icon>
         </v-btn>
         </v-fade-transition>
@@ -52,6 +68,7 @@ export default {
     },
     colNum: Number,
     visibleDeleteMode: Boolean,
+    visibleEditMode: Boolean,
     page: {
       type: Number,
       default: 1
@@ -69,9 +86,20 @@ export default {
     this.getStudents()
   },
   methods: {
-    removeItem: function (val) {
-      const index = this.studentList.layout.map(item => item.i).indexOf(val);
-      this.studentList.layout.splice(index, 1);
+    editModal(val) {
+      this.$emit('activeEditModal', val)
+    },
+
+    async removeItem(val) {
+      await axios.delete("http://localhost:3001/getStudents/" + val)
+          .then(() => {
+            this.$toast.success("Данные успешно удалены")
+            this.getStudents()
+          })
+          .catch(function (error) {
+            console.log(error);
+            this.$toast.error("Ошибка удаления данных")
+          });
     },
 
     async getStudents() {
@@ -106,7 +134,7 @@ export default {
   right: 2px;
   top: 0;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 100;
 }
 .vue-grid-item .resizing {
   opacity: 0.9;

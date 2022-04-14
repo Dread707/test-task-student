@@ -11,6 +11,18 @@
         />
       </v-dialog>
     </v-row>
+    <v-row justify="center">
+      <v-dialog
+          v-model="showEditModal"
+          persistent
+          max-width="800px"
+      >
+        <edit-card
+            :student="editStudent"
+            @closeEditModal="showEditModal = false"
+        />
+      </v-dialog>
+    </v-row>
 
     <div class="progress-main grid-styles d-inline-flex justify-center" v-if="!isLoading">
       <div class="d-flex flex-column">
@@ -25,10 +37,13 @@
     </div>
     <div class="grid-styles" v-if="isLoading && !displayOption">
       <cards
+          ref="studentCards"
           @studentsCount="studentsCount($event)"
           :studentList="studentList"
           :colNum ="colNum"
+          @activeEditModal="activeEditModal($event)"
           :visibleDeleteMode="visibleDeleteMode"
+          :visibleEditMode="visibleEditMode"
           :page="selectedPage"
       />
       <pagination
@@ -48,10 +63,12 @@
         v-show="!displayOption"
         @addCard="showCreateModal = !showCreateModal"
         @editMode="editMode"
+        @deleteMode="deleteMode"
     />
     <snackbar
         :visibleDeleteNotification="notification"
-        @closeActiveMode="visibleDeleteMode = false"
+        :visibleEditNotification="notification"
+        @closeActiveMode="closeActiveMode($event)"
     />
   </div>
 </template>
@@ -64,10 +81,11 @@ import Snackbar from "@/components/notification/snackbar";
 import CreateCard from "@/components/CRUD/createCard";
 import Pagination from "@/components/buttons/pagination/pagination";
 import Table from "@/components/table/table";
+import EditCard from "@/components/CRUD/editCard";
 
 export default {
   name: "Main",
-  components: {Table, Pagination, CreateCard, Snackbar, ActionButton, Cards},
+  components: {EditCard, Table, Pagination, CreateCard, Snackbar, ActionButton, Cards},
   props: {
     displayOption: Boolean
   },
@@ -81,20 +99,53 @@ export default {
     heightStudentCard: 12,
     colNum: 12,
     visibleDeleteMode: false,
+    visibleEditMode: false,
     notification: {},
     showCreateModal: false,
+    showEditModal: false,
     isLoading: true,
     selectedPage: 1,
+    editStudent: {},
   }),
   methods: {
     getSelectedPage(page) {
       this.selectedPage = page
     },
+    activeEditModal(evt) {
+      this.showEditModal = true;
+      this.editStudent = evt
+
+    },
+    closeActiveMode(evt) {
+      switch (evt) {
+        case 'Edit' :
+          this.visibleEditMode = false
+          break;
+        case 'Delete' :
+          this.visibleDeleteMode = false
+      }
+    },
+
     studentsCount(evt) {
       this.studentList.layout = generateLayout(evt, this.widthStudentCard, this.heightStudentCard)
     },
     editMode() {
-      this.visibleDeleteMode = !this.visibleDeleteMode
+      this.visibleEditMode = !this.visibleEditMode;
+      this.visibleDeleteMode ? this.visibleDeleteMode = false : '';
+
+      this.notification = {
+        notificationType: 'Edit',
+        timeoutNotification: 10000,
+        colorNotification: 'success',
+        textNotification: 'Выбран режим редактирования, чтобы его выключить, закройте это оповещение',
+        showNotification: true,
+        isButtonNotificationActiveAction: true,
+      }
+    },
+
+    deleteMode() {
+      this.visibleDeleteMode = !this.visibleDeleteMode;
+      this.visibleEditMode ? this.visibleEditMode = false : '';
 
       this.notification = {
         notificationType: 'Delete',

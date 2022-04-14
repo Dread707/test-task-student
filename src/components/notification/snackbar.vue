@@ -27,7 +27,8 @@
 export default {
   name: "snackbar",
   props: {
-    visibleDeleteNotification: Object
+    visibleDeleteNotification: Object,
+    visibleEditNotification: Object
   },
   methods: {
     closeActiveMode() {
